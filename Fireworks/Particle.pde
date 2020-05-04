@@ -3,13 +3,15 @@ public class Particle
   
   private int xLocation;
   private int yLocation;
-  private int velocity;
+  private float velocity;
+  private float acceleration;
   
-  Particle(int x, int y, int vel)
+  Particle(int x, int y, float vel, float accel)
   {
     xLocation = x;
     yLocation = y;
     velocity = vel;
+    acceleration = accel;
   }
   
   public void Draw()
@@ -22,6 +24,8 @@ public class Particle
     //in the display grid, subtracting pixel distance
     //moves the particle upwards
     yLocation -= velocity; 
+    
+    velocity -= acceleration;
   }
   
 }
