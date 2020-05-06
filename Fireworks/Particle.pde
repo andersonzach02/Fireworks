@@ -16,7 +16,8 @@ public class Particle
   
   public void Draw()
   {
-    circle(xLocation, yLocation, 10);
+    fill(0);
+    rect(xLocation, yLocation, 5, 20);
   }
   
   public void Update()
