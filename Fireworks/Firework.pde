@@ -12,11 +12,11 @@ public class Firework
   
   public void Load()
   {
-    firework.Draw();
+    firework.Draw(fireworkColor);
   }
   
   public void Launch()
-  {
+  { 
     firework.Update();
   }
     

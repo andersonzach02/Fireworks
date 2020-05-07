@@ -1,32 +1,29 @@
 public class Particle
 {
   
-  private int xLocation;
-  private int yLocation;
-  private float velocity;
-  private float acceleration;
+  private PVector position;
+  private PVector velocity;
+  private PVector acceleration;
   
-  Particle(int x, int y, float vel, float accel)
+  Particle(float x, float y, float speed, float accel)
   {
-    xLocation = x;
-    yLocation = y;
-    velocity = vel;
-    acceleration = accel;
+    position = new PVector(x, y);
+    velocity = new PVector(0, -speed);
+    acceleration = new PVector(0, accel);
   }
   
-  public void Draw()
+  public void Draw(color particleColor)
   {
-    fill(0);
-    rect(xLocation, yLocation, 5, 20);
+    fill(particleColor);
+    circle(position.x, position.y, 10);
   }
   
   public void Update()
   {
     //in the display grid, subtracting pixel distance
     //moves the particle upwards
-    yLocation -= velocity; 
-    
-    velocity -= acceleration;
+    position.add(velocity);
+    velocity.add(acceleration);
   }
   
 }

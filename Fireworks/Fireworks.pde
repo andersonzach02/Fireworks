@@ -1,23 +1,36 @@
-Particle particle;
+ArrayList<Firework> fireworks = new ArrayList<Firework>();
 
-final float gravitationalForce = .98;
+final float gravitationalForceMagnitude = .98;
 
 void setup()
 {
   fullScreen();
   background(255);
-  particle = new Particle(width/2, height/2, GenerateVelocity(), gravitationalForce);
+
 }
 
 
 void draw()
 {
   background(255);
-  particle.Draw();
-  particle.Update();
+  
+  if(random(1) < 0.1)
+  {
+    Particle fireworkParticle = new Particle(random(width), height, GenerateVelocity(), gravitationalForceMagnitude);
+    Firework newFirework = new Firework(fireworkParticle, color(255, 0, 0));
+    fireworks.add(newFirework);
+  }
+  
+  for(Firework firework : fireworks)
+  {
+    firework.Load();
+    firework.Launch();
+  }
+
 }
 
+//TODO: Maybe add this function to the particle object or add it to a separate class that controls the environment and physics
 float GenerateVelocity()
 {
-  return random(3.6, 14.8);
+  return random(40, 58);
 }
