@@ -16,14 +16,20 @@ void draw()
   
   if(random(1) < 0.1)
   {
-
-    
+    GenerateFirework();
   }
   
   for(Firework firework : fireworks)
   {
-    firework.Load();
-    firework.Launch();
+    if(firework.GetSpeed() < 0)
+    {
+      firework.Explode();
+    }
+    else
+    {
+      firework.Load();
+      firework.Launch();
+    }
   }
 
 }
@@ -36,6 +42,7 @@ float GenerateVelocity()
 
 void GenerateFirework()
 {
+
     Particle fireworkParticle = new Particle(random(width), height, GenerateVelocity(), gravitationalForceMagnitude);
     
     if(fireworks.size() < 100)
@@ -43,4 +50,5 @@ void GenerateFirework()
       Firework newFirework = new Firework(fireworkParticle, color(255, 0, 0));
       fireworks.add(newFirework);  
     }
+    
 }

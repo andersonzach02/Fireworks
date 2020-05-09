@@ -12,6 +12,21 @@ public class Particle
     acceleration = new PVector(0, accel);
   }
   
+  public PVector GetPosition()
+  {
+    return position;
+  }
+  
+  public float GetAcceleration()
+  {
+    return acceleration.y;
+  }
+  
+  public float GetVelocity()
+  {
+    return velocity.y;
+  }
+  
   public void Draw(color particleColor)
   {
     fill(particleColor);
@@ -24,14 +39,6 @@ public class Particle
     //moves the particle upwards
     position.add(velocity);
     velocity.add(acceleration);
-  }
-  
-  public Particle[] ExplodeParticle()
-  {
-     Particle[] fragments = new Particle[100];    
-   
-    
-    return fragments;
   }
   
 }
