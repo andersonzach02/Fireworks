@@ -1,6 +1,6 @@
 ArrayList<Firework> fireworks = new ArrayList<Firework>();
 
-final float gravitationalForceMagnitude = .98;
+final float gravitationalForceMagnitude = 4.7;
 
 void setup()
 {
@@ -16,9 +16,8 @@ void draw()
   
   if(random(1) < 0.1)
   {
-    Particle fireworkParticle = new Particle(random(width), height, GenerateVelocity(), gravitationalForceMagnitude);
-    Firework newFirework = new Firework(fireworkParticle, color(255, 0, 0));
-    fireworks.add(newFirework);
+
+    
   }
   
   for(Firework firework : fireworks)
@@ -32,5 +31,16 @@ void draw()
 //TODO: Maybe add this function to the particle object or add it to a separate class that controls the environment and physics
 float GenerateVelocity()
 {
-  return random(40, 58);
+  return random(110, 140);
+}
+
+void GenerateFirework()
+{
+    Particle fireworkParticle = new Particle(random(width), height, GenerateVelocity(), gravitationalForceMagnitude);
+    
+    if(fireworks.size() < 100)
+    {
+      Firework newFirework = new Firework(fireworkParticle, color(255, 0, 0));
+      fireworks.add(newFirework);  
+    }
 }

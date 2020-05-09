@@ -26,4 +26,12 @@ public class Particle
     velocity.add(acceleration);
   }
   
+  public Particle[] ExplodeParticle()
+  {
+     Particle[] fragments = new Particle[100];    
+   
+    
+    return fragments;
+  }
+  
 }
