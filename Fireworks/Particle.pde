@@ -27,10 +27,9 @@ public class Particle
     return velocity.y;
   }
   
-  public void Draw(color particleColor)
+  public void Draw()
   {
-    fill(particleColor);
-    circle(position.x, position.y, 10);
+    circle(position.x, position.y, 25);
   }
   
   public void Update()

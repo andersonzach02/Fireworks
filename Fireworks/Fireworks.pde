@@ -1,4 +1,5 @@
 ArrayList<Firework> fireworks = new ArrayList<Firework>();
+ArrayList<FireworkSpark> sparks = new ArrayList<FireworkSpark>();
 
 final float gravitationalForceMagnitude = 4.7;
 
@@ -7,6 +8,11 @@ void setup()
   fullScreen();
   background(255);
 
+  Particle particle = new Particle(width/2, height, GenerateVelocity(), gravitationalForceMagnitude);
+  
+  Firework test = new Firework(particle, color(0, 255, 0));
+  
+  fireworks.add(test);
 }
 
 
@@ -14,22 +20,31 @@ void draw()
 {
   background(255);
   
-  if(random(1) < 0.1)
+  if(random(1) < .1 && fireworks.size() < 100)
   {
-    GenerateFirework();
+    
   }
   
-  for(Firework firework : fireworks)
+  for(int i = 0; i < fireworks.size(); i++)
   {
-    if(firework.GetSpeed() < 0)
+    Firework currentFirework = fireworks.get(i);
+    
+    if(currentFirework.GetSpeed() < 0)
     {
-      firework.Explode();
+      sparks.addAll(currentFirework.Explode());
+      fireworks.remove(currentFirework);
     }
     else
     {
-      firework.Load();
-      firework.Launch();
+      currentFirework.Load();
+      currentFirework.Launch();
     }
+  }
+  
+  for(FireworkSpark spark : sparks)
+  {
+    spark.Draw();
+    spark.Update();
   }
 
 }
@@ -45,10 +60,7 @@ void GenerateFirework()
 
     Particle fireworkParticle = new Particle(random(width), height, GenerateVelocity(), gravitationalForceMagnitude);
     
-    if(fireworks.size() < 100)
-    {
-      Firework newFirework = new Firework(fireworkParticle, color(255, 0, 0));
-      fireworks.add(newFirework);  
-    }
-    
+    Firework newFirework = new Firework(fireworkParticle, color(255, 0, 0));
+    fireworks.add(newFirework);  
+
 }

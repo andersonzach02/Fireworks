@@ -3,13 +3,13 @@ public class Firework
   
   private Particle firework;
   private color fireworkColor;
-  private FireworkSpark[] sparks;
+  private ArrayList<FireworkSpark> sparks;
   
   Firework(Particle fireworkParticle, color flameColor)
   {
     firework = fireworkParticle;
     fireworkColor = flameColor;
-    sparks = new FireworkSpark[100];
+    sparks = new ArrayList<FireworkSpark>();
   }
   
   public float GetSpeed()
@@ -19,7 +19,8 @@ public class Firework
   
   public void Load()
   {
-    firework.Draw(fireworkColor);
+    fill(fireworkColor);
+    firework.Draw();
   }
   
   public void Launch()
@@ -27,18 +28,17 @@ public class Firework
     firework.Update();
   }
   
-  public void Explode()
+  public ArrayList<FireworkSpark> Explode()
   {
-    for(int i = 0; i < sparks.length; i++)
+    
+    for(int i = 0; i < 100; i++)
     {
-      sparks[i] = new FireworkSpark(firework);
+      FireworkSpark newSpark = new FireworkSpark(firework);
+      sparks.add(newSpark);
     }
     
-    for(FireworkSpark spark : sparks)
-    {
-      spark.Draw(fireworkColor);
-      spark.Update();
-    }
+    return sparks;
+   
   }
     
   
