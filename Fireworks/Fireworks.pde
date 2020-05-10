@@ -6,23 +6,17 @@ final float gravitationalForceMagnitude = 4.7;
 void setup()
 {
   fullScreen();
-  background(255);
-
-  Particle particle = new Particle(width/2, height, GenerateVelocity(), gravitationalForceMagnitude);
-  
-  Firework test = new Firework(particle, color(0, 255, 0));
-  
-  fireworks.add(test);
+  background(0);
 }
 
 
 void draw()
 {
-  background(255);
+  background(0);
   
-  if(random(1) < .1 && fireworks.size() < 100)
+  if(random(1) < .05 && fireworks.size() < 100)
   {
-    
+    GenerateFirework();
   }
   
   for(int i = 0; i < fireworks.size(); i++)
@@ -41,8 +35,15 @@ void draw()
     }
   }
   
-  for(FireworkSpark spark : sparks)
+  for(int i = 0; i < sparks.size(); i++)
   {
+    FireworkSpark spark = sparks.get(i);
+    
+    if(spark.GetPosition().y > height || spark.GetPosition().x > width || spark.GetPosition().x < 0)
+    {
+      sparks.remove(spark);
+    }
+    
     spark.Draw();
     spark.Update();
   }
@@ -52,7 +53,7 @@ void draw()
 //TODO: Maybe add this function to the particle object or add it to a separate class that controls the environment and physics
 float GenerateVelocity()
 {
-  return random(110, 140);
+  return random(100, 140);
 }
 
 void GenerateFirework()
@@ -60,7 +61,7 @@ void GenerateFirework()
 
     Particle fireworkParticle = new Particle(random(width), height, GenerateVelocity(), gravitationalForceMagnitude);
     
-    Firework newFirework = new Firework(fireworkParticle, color(255, 0, 0));
+    Firework newFirework = new Firework(fireworkParticle, color(random(256), random(256), random(256)));
     fireworks.add(newFirework);  
 
 }

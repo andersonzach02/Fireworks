@@ -33,7 +33,7 @@ public class Particle
   }
   
   public void Update()
-  {
+  { 
     //in the display grid, subtracting pixel distance
     //moves the particle upwards
     position.add(velocity);

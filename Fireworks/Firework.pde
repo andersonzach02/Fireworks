@@ -12,6 +12,11 @@ public class Firework
     sparks = new ArrayList<FireworkSpark>();
   }
   
+  public color GetColor()
+  {
+     return fireworkColor; 
+  }
+  
   public float GetSpeed()
   {
     return -firework.GetVelocity();
@@ -33,7 +38,7 @@ public class Firework
     
     for(int i = 0; i < 100; i++)
     {
-      FireworkSpark newSpark = new FireworkSpark(firework);
+      FireworkSpark newSpark = new FireworkSpark(firework, this);
       sparks.add(newSpark);
     }
     
