@@ -19,6 +19,8 @@ void draw()
     GenerateFirework();
   }
   
+  //Make interface so sparks and fireworks can be in same array and update them all at once - clean up how they look and code
+  
   for(int i = 0; i < fireworks.size(); i++)
   {
     Firework currentFirework = fireworks.get(i);
