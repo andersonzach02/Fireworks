@@ -7,7 +7,7 @@ class FireworkSpark
   private float opacity;
   private Firework baseFirework;
   
-  public FireworkSpark(Particle baseParticle, Firework explodedFirework)
+  public FireworkSpark(FireworkParticle baseParticle, Firework explodedFirework)
   {
     position = new PVector(baseParticle.GetPosition().x, baseParticle.GetPosition().y);
     velocity = new PVector(random(-40, 40), random(-40, 40));

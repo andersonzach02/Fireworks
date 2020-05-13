@@ -61,7 +61,7 @@ float GenerateVelocity()
 void GenerateFirework()
 {
 
-    Particle fireworkParticle = new Particle(random(width), height, GenerateVelocity(), gravitationalForceMagnitude);
+    FireworkParticle fireworkParticle = new FireworkParticle(random(width), height, GenerateVelocity(), gravitationalForceMagnitude);
     
     Firework newFirework = new Firework(fireworkParticle, color(random(256), random(256), random(256)));
     fireworks.add(newFirework);  

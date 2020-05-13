@@ -1,11 +1,11 @@
-public class Particle
+public class FireworkParticle
 {
   
   private PVector position;
   private PVector velocity;
   private PVector acceleration;
   
-  Particle(float x, float y, float speed, float accel)
+  FireworkParticle(float x, float y, float speed, float accel)
   {
     position = new PVector(x, y);
     velocity = new PVector(0, -speed);

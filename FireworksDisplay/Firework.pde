@@ -1,11 +1,11 @@
 public class Firework
 {
   
-  private Particle firework;
+  private FireworkParticle firework;
   private color fireworkColor;
   private ArrayList<FireworkSpark> sparks;
   
-  Firework(Particle fireworkParticle, color flameColor)
+  Firework(FireworkParticle fireworkParticle, color flameColor)
   {
     firework = fireworkParticle;
     fireworkColor = flameColor;
