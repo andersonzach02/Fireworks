@@ -22,13 +22,13 @@ public class Firework
     return -firework.GetVelocity();
   }
   
-  public void Load()
+  public void Draw()
   {
     fill(fireworkColor);
     firework.Draw();
   }
   
-  public void Launch()
+  public void Update()
   { 
     firework.Update();
   }

@@ -11,7 +11,7 @@ class FireworkSpark
   {
     position = new PVector(baseParticle.GetPosition().x, baseParticle.GetPosition().y);
     velocity = new PVector(random(-40, 40), random(-40, 40));
-    acceleration = new PVector(0, baseParticle.GetAcceleration());
+    acceleration = new PVector(0, FireworksDisplay.gravitationalForceMagnitude);
     baseFirework = explodedFirework;
     opacity = 255;
   }

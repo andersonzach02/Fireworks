@@ -5,21 +5,16 @@ public class FireworkParticle
   private PVector velocity;
   private PVector acceleration;
   
-  FireworkParticle(float x, float y, float speed, float accel)
+  FireworkParticle(float x, float y)
   {
     position = new PVector(x, y);
-    velocity = new PVector(0, -speed);
-    acceleration = new PVector(0, accel);
+    velocity = new PVector(0, -random(100, 140));
+    acceleration = new PVector(0, FireworksDisplay.gravitationalForceMagnitude);
   }
   
   public PVector GetPosition()
   {
     return position;
-  }
-  
-  public float GetAcceleration()
-  {
-    return acceleration.y;
   }
   
   public float GetVelocity()

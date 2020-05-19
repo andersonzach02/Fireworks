@@ -1,7 +1,7 @@
 ArrayList<Firework> fireworks = new ArrayList<Firework>();
 ArrayList<FireworkSpark> sparks = new ArrayList<FireworkSpark>();
 
-final float gravitationalForceMagnitude = 4.7;
+final static float gravitationalForceMagnitude = 4.7;
 
 void setup()
 {
@@ -19,8 +19,6 @@ void draw()
     GenerateFirework();
   }
   
-  //Make interface so sparks and fireworks can be in same array and update them all at once - clean up how they look and code
-  
   for(int i = 0; i < fireworks.size(); i++)
   {
     Firework currentFirework = fireworks.get(i);
@@ -32,8 +30,8 @@ void draw()
     }
     else
     {
-      currentFirework.Load();
-      currentFirework.Launch();
+      currentFirework.Draw();
+      currentFirework.Update();
     }
   }
   
@@ -52,18 +50,9 @@ void draw()
 
 }
 
-//TODO: Maybe add this function to the particle object or add it to a separate class that controls the environment and physics
-float GenerateVelocity()
-{
-  return random(100, 140);
-}
-
 void GenerateFirework()
 {
-
-    FireworkParticle fireworkParticle = new FireworkParticle(random(width), height, GenerateVelocity(), gravitationalForceMagnitude);
-    
+    FireworkParticle fireworkParticle = new FireworkParticle(random(width), height);    
     Firework newFirework = new Firework(fireworkParticle, color(random(256), random(256), random(256)));
     fireworks.add(newFirework);  
-
 }
